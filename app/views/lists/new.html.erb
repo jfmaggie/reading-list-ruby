@@ -1,0 +1,8 @@
+<h1>Create New List</h1>
+
+<%= form_for @list, url: {action: "create"} do |form| %>
+  <%= form.label :name%>
+  <%= form.text_field :name%>
+  
+  <%= form.submit "Create List" %>
+<% end %>
