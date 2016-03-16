@@ -1,6 +1,7 @@
 <h1>Lists Index</h1>
+<%= button_to "New List", new_list_path, method: "get" %>
 <ul>
   <% @lists.each do |list| %>
-    <li><%= list.name %></li>
+    <li><%= link_to list.name, list %></li>
   <% end %>
 </ul>

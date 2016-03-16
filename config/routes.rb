@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
+
+  # get '/lists' => 'lists#index'
+  # get '/lists/new' => 'lists#new'
+  # post '/lists' => 'lists#create'
+  # get '/lists/:id' => 'lists#show', as: :list
+  # get '/lists/:id/edit' => 'lists#edit', as: :edit_list
+  # put '/lists/:id' => 'lists#update'
+  # patch '/lists/:id' => 'lists#update'
+  # delete '/lists/:id' => 'lists#destroy', as: :delete_list
+
+  resources :lists
+  root 'lists#index' # ListsController
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'lists#index' # ListsController
-  get '/lists/new' => 'lists#new'
-  post '/lists' => 'lists#create'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

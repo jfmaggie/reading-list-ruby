@@ -5,6 +5,11 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  # GET /lists/:id, single list
+  def show
+    @list = List.find(params[:id])
+  end
+
   # GET /lists/new, to show form that will be used for creating a list
   def new
     @list = List.new
@@ -21,6 +26,31 @@ class ListsController < ApplicationController
       # if @list.save fails
       render 'new'
     end
+  end
+
+  # GET /lists/:id/edit, to show the form that will be used for editing list with id == :id
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  # PUT /lists/:id, to update the list with id == :id
+  def update
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      # if the update succeeds
+      redirect_to @list
+    else
+      # if the update fails
+      render 'edit'
+    end
+  end
+
+  # DELETE /lists/:id, to destroy a list with id == :id
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+
+    redirect_to root_path
   end
 
   private

@@ -1,0 +1,5 @@
+<h1><%= @list.name %></h1>
+
+<%= link_to "List Index", lists_path %>
+<%= button_to "Edit List", edit_list_path(@list), method: "get" %>
+<%= button_to "Delete List", @list, method: "delete" %>
