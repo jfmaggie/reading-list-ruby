@@ -21,9 +21,11 @@ class ListsController < ApplicationController
 
     if @list.save
       # if @list.save succeeds
+      flash[:notice] = "List #{@list.name} was successfully created!"
       redirect_to root_path
     else
       # if @list.save fails
+      flash[:alert] = "Something went wrong!"
       render 'new'
     end
   end
@@ -38,9 +40,11 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     if @list.update(list_params)
       # if the update succeeds
+      flash[:notice] = "List #{@list.name} was successfully updated!"
       redirect_to @list
     else
       # if the update fails
+      flash[:alert] = "Something went wrong!"
       render 'edit'
     end
   end
@@ -50,6 +54,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
 
+    flash[:notice] = "List destroyed!"
     redirect_to root_path
   end
 
