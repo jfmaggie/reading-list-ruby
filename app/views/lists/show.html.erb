@@ -1,5 +1,22 @@
 <h1><%= @list.name %></h1>
 
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to "List Index", lists_path %>
 <%= button_to "Edit List", edit_list_path(@list), method: "get" %>
 <%= button_to "Delete List", @list, method: "delete" %>
+
+<%= button_to "New Item", new_list_item_path(@list), method: "get" %>
