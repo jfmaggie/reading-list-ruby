@@ -4,12 +4,18 @@
   <thead>
     <th>ID</th>
     <th>Name</th>
+    <th>Actions</th>
   </thead>
   <tbody>
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
         <td><%= item.name %></td>
+        <td>
+          <%= button_to "Show", list_item_path(@list.id, item.id), method: "get"%>
+          <%= button_to "Edit", edit_list_item_path(@list.id, item.id), method: "get"%>
+          <%= button_to "Delete", list_item_path(@list.id, item.id), method: "delete"%>
+        </td>
       </tr>
     <% end %>
   </tbody>

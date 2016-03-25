@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :find_list, only: [:show, :edit, :update, :destroy]
 
   # GET /lists, all lists
   def index
@@ -7,7 +8,6 @@ class ListsController < ApplicationController
 
   # GET /lists/:id, single list
   def show
-    @list = List.find(params[:id])
     @items = @list.items
   end
 
@@ -33,12 +33,10 @@ class ListsController < ApplicationController
 
   # GET /lists/:id/edit, to show the form that will be used for editing list with id == :id
   def edit
-    @list = List.find(params[:id])
   end
 
   # PUT /lists/:id, to update the list with id == :id
   def update
-    @list = List.find(params[:id])
     if @list.update(list_params)
       # if the update succeeds
       flash[:notice] = "List #{@list.name} was successfully updated!"
@@ -52,7 +50,6 @@ class ListsController < ApplicationController
 
   # DELETE /lists/:id, to destroy a list with id == :id
   def destroy
-    @list = List.find(params[:id])
     @list.destroy
 
     flash[:notice] = "List destroyed!"
@@ -63,5 +60,9 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name)
+  end
+
+  def find_list
+    @list = List.find(params[:id])
   end
 end
