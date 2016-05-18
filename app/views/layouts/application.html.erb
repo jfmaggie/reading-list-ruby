@@ -5,16 +5,25 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
 
-<% if flash[:notice] %>
+<!-- <% if flash[:notice] %>
   <div><%= flash[:notice] %></div>
 <% end %>
 
 <% if flash[:alert] %>
   <div><%= flash[:alert] %></div>
-<% end %>
+<% end %> -->
+
+<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+  <a class="navbar-brand" href="<%= root_path%>">Reading List</a>
+  <div class="pull-xs-right">
+    <%= link_to raw("<i class=\"fa fa-2x fa-pencil-square-o\" aria-hidden=\"true\"></i>"), new_list_path, method: "get"%>
+  </div>
+
+</nav>
 
 <%= yield %>
 

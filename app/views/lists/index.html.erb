@@ -1,7 +1,9 @@
-<h1>Lists Index</h1>
-<%= button_to "New List", new_list_path, method: "get" %>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list %></li>
-  <% end %>
-</ul>
+<% @lists.each do |list| %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="list">
+        <%= link_to list.name, list %>
+      </div>
+    </div>
+  </div>
+<% end %>

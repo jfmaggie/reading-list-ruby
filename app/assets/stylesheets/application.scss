@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import "lists";
+@import "items";
+
+body {
+  padding-top: 80px;
+}
