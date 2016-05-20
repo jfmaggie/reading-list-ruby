@@ -1,28 +1,26 @@
-<h1><%= @list.name %></h1>
+<%= content_for(:list_name, @list.name) %>
+<%= content_for(:new_path, new_list_item_path(@list)) %>
 
-<table>
-  <thead>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Actions</th>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= item.name %></td>
-        <td>
-          <%= button_to "Show", list_item_path(@list.id, item.id), method: "get"%>
-          <%= button_to "Edit", edit_list_item_path(@list.id, item.id), method: "get"%>
-          <%= button_to "Delete", list_item_path(@list.id, item.id), method: "delete"%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @items.each do |item| %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="list">
+        <ul class="item-right">
+          <li><%= button_to "Show", list_item_path(@list.id, item.id), method: "get"%></li>
+          <li><%= button_to "Edit", edit_list_item_path(@list.id, item.id), method: "get"%></li>
+          <li><%= button_to "Delete", list_item_path(@list.id, item.id), method: "delete"%></li>
+        </ul>
 
-<%= link_to "List Index", lists_path %>
+        <div class="item-left">
+          <%= item.id %>
+          <%= item.name %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+<!--
 <%= button_to "Edit List", edit_list_path(@list), method: "get" %>
 <%= button_to "Delete List", @list, method: "delete" %>
-
-<%= button_to "New Item", new_list_item_path(@list), method: "get" %>
+-->

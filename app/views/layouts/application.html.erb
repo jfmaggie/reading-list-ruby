@@ -19,8 +19,23 @@
 
 <nav class="navbar navbar-fixed-top navbar-light bg-faded">
   <a class="navbar-brand" href="<%= root_path%>">Reading List</a>
+
+  <% if content_for? :list_name %>
+    <a class="navbar-brand">
+      <%= yield(:list_name) %>
+      <ul class="item-right">
+        <li><%= button_to "Edit List", edit_list_path(@list), method: "get" %></li>
+        <li><%= button_to "Delete List", @list, method: "delete" %></li>
+      </ul>
+    </a>
+  <% end %>
+
   <div class="pull-xs-right">
-    <%= link_to raw("<i class=\"fa fa-2x fa-pencil-square-o\" aria-hidden=\"true\"></i>"), new_list_path, method: "get"%>
+    <% if content_for? :new_path %>
+      <%= link_to raw("<i class=\"fa fa-2x fa-pencil-square-o\" aria-hidden=\"true\"></i>"), yield(:new_path), method: "get" %>
+    <% else %>
+      <%= link_to raw("<i class=\"fa fa-2x fa-pencil-square-o\" aria-hidden=\"true\"></i>"), new_list_path, method: "get" %>
+    <% end %>
   </div>
 
 </nav>

@@ -2,6 +2,11 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="list">
+        <ul class="item-right">
+          <li><%= button_to "Edit List", edit_list_path(list), method: "get" %></li>
+          <li><%= button_to "Delete List", list, method: "delete" %></li>
+        </ul>
+
         <%= link_to list.name, list %>
       </div>
     </div>

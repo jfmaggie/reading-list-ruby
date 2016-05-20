@@ -20,3 +20,12 @@
 body {
   padding-top: 80px;
 }
+
+.navbar-brand {
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    background: #CCE;
+    font-size: 1.5em;
+  }
+}
