@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   # GET /lists, all lists
   def index
     @lists = List.all
+    @list = List.new
   end
 
   # GET /lists/:id, single list

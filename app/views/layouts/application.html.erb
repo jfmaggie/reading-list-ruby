@@ -34,7 +34,9 @@
     <% if content_for? :new_path %>
       <%= link_to raw("<i class=\"fa fa-2x fa-pencil-square-o\" aria-hidden=\"true\"></i>"), yield(:new_path), method: "get" %>
     <% else %>
-      <%= link_to raw("<i class=\"fa fa-2x fa-pencil-square-o\" aria-hidden=\"true\"></i>"), new_list_path, method: "get" %>
+    <a class="pointer-on-hover">
+      <i class="fa fa-2x fa-pencil-square-o" data-toggle="modal" data-target="#myModal"></i>
+    </a>
     <% end %>
   </div>
 
