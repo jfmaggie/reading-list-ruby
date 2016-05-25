@@ -10,6 +10,7 @@ class ListsController < ApplicationController
   # GET /lists/:id, single list
   def show
     @items = @list.items
+    @item = Item.new
   end
 
   # GET /lists/new, to show form that will be used for creating a list
