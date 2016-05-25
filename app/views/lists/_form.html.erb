@@ -1,18 +1,10 @@
 <% if list.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(list.errors.count, "error") %> prohibited this article from being saved.</h2>
-
-  <ul>
-    <% list.errors.full_messages.each do |error_message| %>
-    <li><%= error_message %></li>
-    <% end %>
-  </ul>
-</div>
+  <%= render partial: "list_errors", locals: {list: @list}%>
 <% end %>
 
-<%= form_for list, url: {action: action} do |form| %>
-  <%= form.label :name%>
-  <%= form.text_field :name%>
+<%= form_for list, url: {action: action}, remote: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, id: "list-name-input" %>
 
   <%= form.submit "#{action.capitalize} List", class: "btn btn-primary" %>
 <% end %>

@@ -1,17 +1,6 @@
-<% @lists.each do |list| %>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="list">
-        <ul class="item-right">
-          <li><%= button_to "Edit List", edit_list_path(list), method: "get" %></li>
-          <li><%= button_to "Delete List", list, method: "delete" %></li>
-        </ul>
-
-        <%= link_to list.name, list %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<div id="lists">
+  <%= render @lists%>
+</div>
 
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
@@ -28,6 +17,7 @@
       </div>
       <div class="modal-body">
         <%= render partial: "form", locals: {list: @list, action: "create"} %>
+        <div id='list-errors'></div>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

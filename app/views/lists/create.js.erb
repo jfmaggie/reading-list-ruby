@@ -1,0 +1,8 @@
+<% if @list.errors.any? %>
+  $("#list-errors").html("<%= escape_javascript(render partial: 'list_errors', locals: {list: @list}) %>");
+<% else%>
+  $("#list-errors").html("");
+  $("<%= escape_javascript(render @list) %>").appendTo("#lists");
+  $("#create-list-modal").modal("hide");
+  $("#list-name-input").val("");
+<% end %>

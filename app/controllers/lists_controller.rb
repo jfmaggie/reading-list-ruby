@@ -22,14 +22,16 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
 
-    if @list.save
-      # if @list.save succeeds
-      flash[:notice] = "List #{@list.name} was successfully created!"
-      redirect_to root_path
-    else
-      # if @list.save fails
-      flash[:alert] = "Something went wrong!"
-      render 'new'
+    respond_to do |format|
+      if @list.save
+        # if @list.save succeeds
+        format.html { redirect_to lists_path, notice: "List #{@list.name} was successfully created!" }
+        format.js {}
+      else
+        # if @list.save fails
+        format.html { render 'new', alert: "Something went wrong!" }
+        format.js {}
+      end
     end
   end
 
