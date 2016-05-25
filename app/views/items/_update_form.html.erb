@@ -1,0 +1,19 @@
+<% if item.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(item.errors.count, "error") %> prohibited this article from being saved.</h2>
+
+  <ul>
+    <% item.errors.full_messages.each do |error_message| %>
+    <li><%= error_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- Modified the form url parameter so that it supports PUT to different controller -->
+<%= form_for item, url: list_item_path(list, item), html: { method: :put } do |form| %>
+  <%= form.label :name%>
+  <%= form.text_field :name%>
+
+  <%= form.submit "Update Item" %>
+<% end %>
