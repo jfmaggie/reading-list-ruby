@@ -15,10 +15,14 @@ class ItemsController < ApplicationController
   def create
     @item = @list.items.build(item_params)
 
-    if @item.save
-      redirect_to @list
-    else
-      render "new"
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to @list }
+        format.js {}
+      else
+        format.html { render "new" }
+        format.js {}
+      end
     end
   end
 

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="list">
+      <ul class="item-right">
+        <li><%= button_to "Show", list_item_path(@list.id, item.id), method: "get"%></li>
+        <li><%= button_to "Edit", edit_list_item_path(@list.id, item.id), method: "get"%></li>
+        <li><%= button_to "Delete", list_item_path(@list.id, item.id), method: "delete"%></li>
+      </ul>
+
+      <div class="item-left">
+        <%= item.id %>
+        <%= item.name %>
+      </div>
+
+    </div>
+  </div>
+</div>

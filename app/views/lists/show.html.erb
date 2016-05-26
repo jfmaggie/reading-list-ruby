@@ -1,25 +1,9 @@
 <%= content_for(:list_name, @list.name) %>
 <%= content_for(:new_path, new_list_item_path(@list)) %>
 
-<% @items.each do |item| %>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="list">
-        <ul class="item-right">
-          <li><%= button_to "Show", list_item_path(@list.id, item.id), method: "get"%></li>
-          <li><%= button_to "Edit", edit_list_item_path(@list.id, item.id), method: "get"%></li>
-          <li><%= button_to "Delete", list_item_path(@list.id, item.id), method: "delete"%></li>
-        </ul>
-
-        <div class="item-left">
-          <%= item.id %>
-          <%= item.name %>
-        </div>
-
-      </div>
-    </div>
-  </div>
-<% end %>
+<div id="items">
+  <%= render @items %>
+</div>
 <!--
 <%= button_to "Edit List", edit_list_path(@list), method: "get" %>
 <%= button_to "Delete List", @list, method: "delete" %>
@@ -35,6 +19,7 @@
       </div>
       <div class="modal-body">
         <%= render partial: "items/create_form", locals: {list: @list, item: @item} %>
+        <div id='item-errors'></div>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

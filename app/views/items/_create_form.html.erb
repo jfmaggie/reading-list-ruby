@@ -11,9 +11,9 @@
 <% end %>
 
 <!-- Modified the form url parameter so that it supports POST to different controller -->
-<%= form_for item, url: list_items_path(list), html: { method: :post } do |form| %>
-  <%= form.label :name%>
-  <%= form.text_field :name%>
+<%= form_for item, url: list_items_path(list), html: { method: :post }, remote: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, id: "item-name-input" %>
 
   <%= form.submit "Create Item" %>
 <% end %>
