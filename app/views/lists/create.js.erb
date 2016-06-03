@@ -1,9 +1,16 @@
 <% if @list.errors.any? %>
   $("#list-errors").html("<%= escape_javascript(render partial: 'list_errors', locals: {list: @list}) %>");
 <% else%>
-  // $("#list-errors").html("");
-  // $("#lists").prepend("<%= escape_javascript(render @list) %>");
-  // $("#create-list-modal").modal("hide");
-  // $("#list-name-input").val("");
-  window.location = "/lists"
+  $("#list-errors").html("");
+  var listElement = $(".list");
+  if (listElement.length >= 5) {
+    $(".list").last().remove();
+  }
+  if (listElement.length >= 5 && isLastPage()) {
+    addNewPage("/lists");
+  }
+  $("#lists").prepend("<%= escape_javascript(render @list) %>");
+  $("#create-list-modal").modal("hide");
+  $("#list-name-input").val("");
+  // window.location = "/lists";
 <% end %>

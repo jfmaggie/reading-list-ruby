@@ -1,5 +1,16 @@
 <% if @item.errors.any? %>
   $("#item-errors").html("<%= escape_javascript(render partial: 'item_errors', locals: {list: @list, item: @item}) %>");
 <% else%>
-  window.location = window.location.pathname;
+  $("#item-errors").html("");
+  var itemElement = $(".item");
+  if (itemElement.length >= 5) {
+    $(".item").last().remove();
+  }
+  if (itemElement.length >= 5 && isLastPage()) {
+
+    addNewPage(window.location.pathname);
+  }
+  $("#items").prepend("<%= escape_javascript(render @item) %>");
+  $("#create-item-modal").modal("hide");
+  $("#item-name-input").val("");
 <% end %>

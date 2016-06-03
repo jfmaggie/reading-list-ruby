@@ -9,3 +9,21 @@
     *display: inline;
   }
 }
+
+.item {
+  min-height: 70px;
+  padding: 15px;
+  margin: 15px 0;
+  background: #CCC;
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    background: #CCE;
+    min-height: 100px;
+  }
+
+  & > ul > li {
+    display: inline-block;
+    *display: inline;
+  }
+}
