@@ -1,8 +1,9 @@
 <% if @list.errors.any? %>
   $("#list-errors").html("<%= escape_javascript(render partial: 'list_errors', locals: {list: @list}) %>");
 <% else%>
-  $("#list-errors").html("");
-  $("<%= escape_javascript(render @list) %>").appendTo("#lists");
-  $("#create-list-modal").modal("hide");
-  $("#list-name-input").val("");
+  // $("#list-errors").html("");
+  // $("#lists").prepend("<%= escape_javascript(render @list) %>");
+  // $("#create-list-modal").modal("hide");
+  // $("#list-name-input").val("");
+  window.location = "/lists"
 <% end %>

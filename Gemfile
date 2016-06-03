@@ -30,6 +30,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
+# used for paginating resources (https://github.com/amatsuda/kaminari)
+gem 'kaminari', '~> 0.17'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

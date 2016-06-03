@@ -4,6 +4,9 @@
 <div id="items">
   <%= render @items %>
 </div>
+<div class="row pagination-links">
+  <%= paginate @items %>
+</div>
 <!--
 <%= button_to "Edit List", edit_list_path(@list), method: "get" %>
 <%= button_to "Delete List", @list, method: "delete" %>

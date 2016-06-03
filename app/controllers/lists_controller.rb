@@ -3,13 +3,13 @@ class ListsController < ApplicationController
 
   # GET /lists, all lists
   def index
-    @lists = List.all
+    @lists = List.all.reverse_order.page(params[:page])
     @list = List.new
   end
 
   # GET /lists/:id, single list
   def show
-    @items = @list.items
+    @items = @list.items.reverse_order.page(params[:page])
     @item = Item.new
   end
 
@@ -25,11 +25,11 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.save
         # if @list.save succeeds
-        format.html { redirect_to lists_path, notice: "List #{@list.name} was successfully created!" }
+        format.html { redirect_to(lists_path, notice: "List #{@list.name} was successfully created!") }
         format.js {}
       else
         # if @list.save fails
-        format.html { render 'new', alert: "Something went wrong!" }
+        format.html { render('new', alert: "Something went wrong!") }
         format.js {}
       end
     end
@@ -44,11 +44,11 @@ class ListsController < ApplicationController
     if @list.update(list_params)
       # if the update succeeds
       flash[:notice] = "List #{@list.name} was successfully updated!"
-      redirect_to @list
+      redirect_to(@list)
     else
       # if the update fails
       flash[:alert] = "Something went wrong!"
-      render 'edit'
+      render('edit')
     end
   end
 
@@ -57,7 +57,7 @@ class ListsController < ApplicationController
     @list.destroy
 
     flash[:notice] = "List destroyed!"
-    redirect_to root_path
+    redirect_to(root_path)
   end
 
   private
