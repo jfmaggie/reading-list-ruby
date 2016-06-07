@@ -7,7 +7,6 @@
     $(".item").last().remove();
   }
   if (itemElement.length >= 5 && isLastPage()) {
-
     addNewPage(window.location.pathname);
   }
   $("#items").prepend("<%= escape_javascript(render @item) %>");
