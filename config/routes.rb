@@ -15,6 +15,14 @@ Rails.application.routes.draw do
 
   root 'lists#index' # ListsController
 
+  # constraints is a keyword parameter that accepts a lambda that will evaluat whether or not a request can be made to this namespace
+  namespace :api, constraints: lambda { |req| req.format == :json } do
+    namespace :v1 do
+      resources :lists, except: [:new, :edit]
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
