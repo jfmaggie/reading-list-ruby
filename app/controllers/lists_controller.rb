@@ -4,6 +4,8 @@ class ListsController < ApplicationController
   # GET /lists, all lists
   def index
     @lists = List.all.reverse_order.page(params[:page])
+
+    # for the modal to create list
     @list = List.new
   end
 
