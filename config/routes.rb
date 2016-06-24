@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # create options routes for all previously defined routes 
+  match '*path', via: [:options], to:  lambda {|_| [204, {'Content-Type' => 'text/plain'}, []]}
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
