@@ -29,7 +29,7 @@ class Api::V1::ItemsController < ApiController
     if @item.update(item_params)
       render json: @item
     else
-      render json: @item.errros, status: :unprocessable_entity # status code 422
+      render json: @item.errors, status: :unprocessable_entity # status code 422
     end
   end
 
