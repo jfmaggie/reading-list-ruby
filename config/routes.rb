@@ -18,13 +18,14 @@ Rails.application.routes.draw do
   # constraints is a keyword parameter that accepts a lambda that will evaluat whether or not a request can be made to this namespace
   namespace :api, constraints: lambda { |req| req.format == :json } do
     namespace :v1 do
+      resources :users
       resources :lists, except: [:new, :edit] do
         resources :items, except: [:new, :edit]
       end
     end
   end
 
-  # create options routes for all previously defined routes 
+  # create options routes for all previously defined routes
   match '*path', via: [:options], to:  lambda {|_| [204, {'Content-Type' => 'text/plain'}, []]}
 
 
