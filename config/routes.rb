@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       resources :lists, except: [:new, :edit] do
         resources :items, except: [:new, :edit]
       end
+
+      post '/login' => 'sessions#create'
+      delete '/logout' => 'sessions#destroy'
     end
   end
 

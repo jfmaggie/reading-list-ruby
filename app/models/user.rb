@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   after_validation :hash_password
 
+  has_many :sessions
+
   private
 
   def hash_password

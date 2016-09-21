@@ -9,4 +9,14 @@ class ApiController < ActionController::Base
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Request-With, Content-Type, Accept, Authorization'
   end
 
+  def current_user
+    session = Session.find_by_token(request.headers['Authorization'])
+
+    if session
+      session.is_valid? ? session.user : nil
+    else
+      nil
+    end
+  end
+
 end
