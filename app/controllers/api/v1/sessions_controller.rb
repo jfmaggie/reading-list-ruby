@@ -13,7 +13,14 @@ class Api::V1::SessionsController < ApiController
   end
 
   def destroy
-    render json: {status: "LOGGED OUT"}
+    session = Session.find_by_token(request.headers['Authorization'])
+
+    if session && !session.deleted_at
+      session.update({ deleted_at: Time.now() })
+      render json: { success: true }
+    else
+      render json: { success: true }
+    end
   end
 
   private
