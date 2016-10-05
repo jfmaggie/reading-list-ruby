@@ -5,9 +5,9 @@ class Api::V1::SessionsController < ApiController
 
     if stored_pw == session_params[:password]
       @session = user.sessions.create(token: SecureRandom.hex(16), ttl: 900)
-      render json: {token: @session.token}
+      render json: { token: @session.token }
     else
-      render json: @session, status: :unauthorized
+      render json: { message: "Incorrect email or password" }, status: :unprocessable_entity
     end
 
   end
