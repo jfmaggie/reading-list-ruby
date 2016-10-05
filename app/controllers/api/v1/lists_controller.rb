@@ -1,5 +1,7 @@
 class Api::V1::ListsController < ApiController
   before_action :find_list, only: [:show, :update, :destroy]
+  before_action :ensure_authenticated, only: [:create, :update, :destroy]
+
   # GET /api/v1/lists
   def index
     @lists = List.all
@@ -39,6 +41,9 @@ class Api::V1::ListsController < ApiController
   end
 
   private
+  def ensure_authenticated
+    render json: { message: 'You are not authorized to do that.'}, status: :unauthorized unless current_user
+  end
 
   def list_params
     params.require(:list).permit(:name)

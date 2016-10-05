@@ -7,7 +7,7 @@ class Api::V1::SessionsController < ApiController
       @session = user.sessions.create(token: SecureRandom.hex(16), ttl: 900)
       render json: {token: @session.token}
     else
-      render json: {status: "WRONG PASSWORD"}
+      render json: @session, status: :unauthorized
     end
 
   end

@@ -12,11 +12,7 @@ class ApiController < ActionController::Base
   def current_user
     session = Session.find_by_token(request.headers['Authorization'])
 
-    if session
-      session.is_valid? ? session.user : nil
-    else
-      nil
-    end
+    session && session.is_valid? ? session.user : nil
   end
 
 end
